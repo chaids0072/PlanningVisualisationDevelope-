@@ -1,7 +1,8 @@
 """This module is designed to help with getting a list of steps for Step3 to use"""
 import re
 import sys
-import server.PddLparser.visualiserFile.PredicateParser.problem_parser
+# import server.PddLparser.visualiserFile.PredicateParser.problem_parser
+import problem_parser
 
 # This python file aims to finish step 3 in our solution
 #######################################################
