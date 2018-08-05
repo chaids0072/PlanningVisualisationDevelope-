@@ -2,7 +2,7 @@
 import re
 import sys
 # import server.PddLparser.visualiserFile.PredicateParser.problem_parser
-import problem_parser
+import PredicateParser.problem_parser
 
 # This python file aims to finish step 3 in our solution
 #######################################################
@@ -63,9 +63,7 @@ def get_stages(plan, problem_dic, problem_file, predicates_list):
     # 1.
     for counter in range(0, len(actionlist)):
         checklist = []
-        init_object_list = server.PddLparser.visualiserFile.\
-            PredicateParser.problem_parser.\
-            get_object_list(predicates_list, cleanactionlist[counter])
+        init_object_list = PredicateParser.problem_parser.get_object_list(predicates_list, cleanactionlist[counter])
         checklist = (init_object_list)
 
         # 2.
