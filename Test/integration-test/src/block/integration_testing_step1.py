@@ -1,7 +1,7 @@
 import sys
-sys.path.append('../')
+sys.path.append('../../../../server/PddLparser/visualiserFile/PredicateParser')
 import unittest
-import server.PddLparser.visualiserFile.PredicateParser.plan_generator as step1
+import plan_generator as step1
 
 class integration_testing_step1(unittest.TestCase):
     # Test if the domain file is not empty
