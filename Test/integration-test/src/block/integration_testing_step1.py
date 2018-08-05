@@ -1,4 +1,5 @@
 import sys
+sys.path.append('../')
 import unittest
 import server.PddLparser.visualiserFile.PredicateParser.plan_generator as step1
 
