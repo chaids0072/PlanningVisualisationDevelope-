@@ -1,8 +1,8 @@
 import unittest
-import server.PddLparser.visualiserFile.PredicateParser.plan_generator as step1
-import server.PddLparser.visualiserFile.PredicateParser.problem_parser as step2
-import server.PddLparser.visualiserFile.PredicateParser.predicates_generator as step3
-import server.PddLparser.visualiserFile.PredicateParser.domain_parser as dom_par
+import server.PddLparser.visualiserFile.parser.plan_generator as step1
+import server.PddLparser.visualiserFile.parser.problem_parser as step2
+import server.PddLparser.visualiserFile.parser.predicates_generator as step3
+import server.PddLparser.visualiserFile.parser.domain_parser as dom_par
 
 class MyTestCase(unittest.TestCase):
     #  Test get_problem_json to see if it can generate an output correctly

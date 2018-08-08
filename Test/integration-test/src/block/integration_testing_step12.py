@@ -1,9 +1,9 @@
-import unittest
 import sys
+sys.path.append('../../../../server/PddLparser/visualiserFile/parser')
 import unittest
-import server.PddLparser.visualiserFile.PredicateParser.plan_generator as step1
-import server.PddLparser.visualiserFile.PredicateParser.problem_parser as step2
-import server.PddLparser.visualiserFile.PredicateParser.domain_parser as dom_par
+import plan_generator as step1
+import problem_parser as step2
+import domain_parser as dom_par
 import re
 
 
