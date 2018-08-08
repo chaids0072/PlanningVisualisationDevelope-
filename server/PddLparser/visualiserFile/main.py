@@ -6,7 +6,7 @@ sys.path.append('../visualiserFile/parser')
 import plan_generator  # Step1: get plan from planning domain api
 import problem_parser  # Step2: parse problem pddl, to get the inital and goal stage
 import predicates_generator  # Step3: manipulate the predicate for each step/stage
-from . import generator.visualisation_generator  # Step4. use the animation profile and stages from step3 to get the visualisation file
+from server.PddLparser.visualiserFile.generator import visualisation_generator  # Step4. use the animation profile and stages from step3 to get the visualisation file
 import domain_parser  # Step3: extract all the available predicates from problem.pddl
 import json
 
@@ -31,7 +31,7 @@ def get_visualisation_file():
     problem_json = problem_parser.get_problem_json(problem_file, predicates_list)
     stages = predicates_generator.get_stages(plan, problem_json, problem_file, predicates_list)
     # A file called visualistaion.json will be generated in the folder if successful
-    server.PddLparser.visualiserFile.generator.visualisation_generator.get_visualisation_json(stages, animation_profile)
+    visualisation_generator.get_visualisation_json(stages, animation_profile)
 
 if __name__ == "__main__":
     get_visualisation_file()
