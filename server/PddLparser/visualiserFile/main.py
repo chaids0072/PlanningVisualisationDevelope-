@@ -2,11 +2,12 @@
 animation profile, and it write the visualisation file to visualsation.json.
 """
 import sys
-import parser.plan_generator  # Step1: get plan from planning domain api
-import parser.problem_parser  # Step2: parse problem pddl, to get the inital and goal stage
-import parser.predicates_generator  # Step3: manipulate the predicate for each step/stage
-import generator.visualisation_generator  # Step4. use the animation profile and stages from step3 to get the visualisation file
-import parser.domain_parser  # Step3: extract all the available predicates from problem.pddl
+sys.path.append('../visualiserFile/parser')
+import plan_generator  # Step1: get plan from planning domain api
+import problem_parser  # Step2: parse problem pddl, to get the inital and goal stage
+import predicates_generator  # Step3: manipulate the predicate for each step/stage
+import server.PddLparser.visualiserFile.generator.visualisation_generator  # Step4. use the animation profile and stages from step3 to get the visualisation file
+import domain_parser  # Step3: extract all the available predicates from problem.pddl
 import json
 
 def get_visualisation_file():
@@ -25,12 +26,12 @@ def get_visualisation_file():
     content = file.read()
     animation_profile = json.loads(content)
 
-    plan = parser.plan_generator.get_plan(domain_file, problem_file)
-    predicates_list = parser.domain_parser.get_domain_json(domain_file)
-    problem_json = parser.problem_parser.get_problem_json(problem_file, predicates_list)
-    stages = parser.predicates_generator.get_stages(plan, problem_json, problem_file, predicates_list)
+    plan = plan_generator.get_plan(domain_file, problem_file)
+    predicates_list = domain_parser.get_domain_json(domain_file)
+    problem_json = problem_parser.get_problem_json(problem_file, predicates_list)
+    stages = predicates_generator.get_stages(plan, problem_json, problem_file, predicates_list)
     # A file called visualistaion.json will be generated in the folder if successful
-    generator.visualisation_generator.get_visualisation_json(stages, animation_profile)
+    server.PddLparser.visualiserFile.generator.visualisation_generator.get_visualisation_json(stages, animation_profile)
 
 if __name__ == "__main__":
     get_visualisation_file()
