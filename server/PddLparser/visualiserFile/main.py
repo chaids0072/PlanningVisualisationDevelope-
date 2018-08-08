@@ -2,12 +2,12 @@
 animation profile, and it write the visualisation file to visualsation.json.
 """
 import sys
-sys.path.append('../visualiserFile/parser')
-from server.PddLparser.visualiserFile.parser import plan_generator  # Step1: get plan from planning domain api
-from server.PddLparser.visualiserFile.parser import problem_parser  # Step2: parse problem pddl, to get the inital and goal stage
-from server.PddLparser.visualiserFile.parser import predicates_generator  # Step3: manipulate the predicate for each step/stage
-from server.PddLparser.visualiserFile.generator import visualisation_generator  # Step4. use the animation profile and stages from step3 to get the visualisation file
-from server.PddLparser.visualiserFile.parser import domain_parser  # Step3: extract all the available predicates from problem.pddl
+sys.path.append('../visualiserFile/pparser')
+import pparser.plan_generator  # Step1: get plan from planning domain api
+import pparser.problem_parser  # Step2: parse problem pddl, to get the inital and goal stage
+import pparser.predicates_generator  # Step3: manipulate the predicate for each step/stage
+import generator.visualisation_generator  # Step4. use the animation profile and stages from step3 to get the visualisation file
+import pparser.domain_parser  # Step3: extract all the available predicates from problem.pddl
 import json
 
 def get_visualisation_file():
@@ -26,12 +26,12 @@ def get_visualisation_file():
     content = file.read()
     animation_profile = json.loads(content)
 
-    plan = plan_generator.get_plan(domain_file, problem_file)
-    predicates_list = domain_parser.get_domain_json(domain_file)
-    problem_json = problem_parser.get_problem_json(problem_file, predicates_list)
-    stages = predicates_generator.get_stages(plan, problem_json, problem_file, predicates_list)
+    plan = pparser.plan_generator.get_plan(domain_file, problem_file)
+    predicates_list = pparser.domain_parser.get_domain_json(domain_file)
+    problem_json = pparser.problem_parser.get_problem_json(problem_file, predicates_list)
+    stages = pparser.predicates_generator.get_stages(plan, problem_json, problem_file, predicates_list)
     # A file called visualistaion.json will be generated in the folder if successful
-    visualisation_generator.get_visualisation_json(stages, animation_profile)
+    generator.visualisation_generator.get_visualisation_json(stages, animation_profile)
 
 if __name__ == "__main__":
     get_visualisation_file()
